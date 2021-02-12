@@ -64,7 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _login() async {
     try {
-      await _googleSignIn.signIn();
+      final account = await _googleSignIn.signIn();
+      if (account == null) {
+        return;
+      }
       setState(() {
         _isLoggedIn = true;
       });
